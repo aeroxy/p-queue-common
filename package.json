@@ -11,9 +11,8 @@
 	},
 	"exports": "./lib/index.js",
 	"scripts": {
-		"roll": "del lib && rollup -c",
-		"build": "del lib && tsc",
-		"test": "xo && npm run roll && nyc ava",
+		"build": "del lib && rollup -c",
+		"test": "xo && npm run build && nyc ava",
 		"bench": "node --loader=ts-node/esm bench.ts"
 	},
 	"files": [
@@ -59,7 +58,6 @@
 		"rollup": "^2.18.1",
 		"rollup-plugin-dts": "^3.0.2",
 		"rollup-plugin-terser": "^7.0.2",
-		"rollup-plugin-typescript": "^1.0.1",
 		"rollup-plugin-typescript2": "^0.31.1",
 		"time-span": "^5.0.0",
 		"ts-node": "^10.2.1",
