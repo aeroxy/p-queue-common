@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+    "target": "es6",
+		"outDir": "lib",
+		"noPropertyAccessFromIndexSignature": false,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+	},
+	"include": [
+		"src",
+    "src/modules"
+	]
+}
