@@ -39,7 +39,7 @@ export default () => {
   // })
   config.push({
     input: './src/index.ts',
-    output: [{ file: 'lib/types/index.d.ts', format: 'cjs' }],
+    output: [{ file: 'lib/index.d.ts', format: 'cjs' }],
     plugins: [dts()]
   })
   return config
