@@ -1,6 +1,6 @@
 {
 	"name": "p-queue-common",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Promise queue with concurrency control",
 	"license": "MIT",
 	"repository": "https://github.com/aeroxy/p-queue-common",
@@ -9,7 +9,7 @@
 		"email": "aero.windwalker@gmail.com",
 		"url": "https://github.com/aeroxy"
 	},
-	"exports": "./lib/index.js",
+	"main": "./lib/index.js",
 	"scripts": {
 		"build": "del lib && rollup -c",
 		"test": "xo && npm run build && nyc ava",
