@@ -1,6 +1,6 @@
 {
 	"name": "p-queue-common",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Promise queue with concurrency control",
 	"license": "MIT",
 	"repository": "https://github.com/aeroxy/p-queue-common",
@@ -11,7 +11,7 @@
 	},
 	"main": "./lib/index.js",
 	"scripts": {
-		"build": "del lib && rollup -c",
+		"build": "del lib && rollup -c --bundleConfigAsCjs",
 		"test": "xo && npm run build && nyc ava",
 		"bench": "node --loader=ts-node/esm bench.ts"
 	},
@@ -42,40 +42,39 @@
 		"bluebird"
 	],
 	"dependencies": {
-		"eventemitter3": "^4.0.7"
+		"eventemitter3": "^5.0.1"
 	},
 	"devDependencies": {
-		"@types/benchmark": "^2.1.1",
-		"@types/node": "^16.7.2",
-		"ava": "^3.15.0",
+		"@sindresorhus/tsconfig": "^5.0.0",
+		"@types/benchmark": "^2.1.5",
+		"@types/node": "^20.10.4",
+		"ava": "^5.3.1",
 		"benchmark": "^2.1.4",
-		"codecov": "^3.8.3",
-		"del-cli": "^4.0.1",
-		"delay": "^5.0.0",
+		"del-cli": "^5.1.0",
+		"delay": "^6.0.0",
 		"in-range": "^3.0.0",
-		"nyc": "^15.1.0",
+		"p-defer": "^4.0.0",
 		"random-int": "^3.0.0",
-		"rollup": "^2.18.1",
-		"rollup-plugin-dts": "^3.0.2",
+		"time-span": "^5.1.0",
+		"tsd": "^0.29.0",
+		"tsx": "^4.6.2",
+		"typescript": "^5.3.3",
+		"xo": "^0.56.0",
+		"rollup": "^4.41.0",
+		"rollup-plugin-dts": "^6.2.1",
 		"rollup-plugin-terser": "^7.0.2",
-		"rollup-plugin-typescript2": "^0.31.1",
-		"time-span": "^5.0.0",
-		"ts-node": "^10.2.1",
-		"typescript": "^4.4.2",
-		"xo": "^0.44.0"
+		"rollup-plugin-typescript2": "^0.36.0"
 	},
 	"ava": {
+		"workerThreads": false,
 		"files": [
 			"test/**"
 		],
 		"extensions": {
 			"ts": "module"
 		},
-		"nonSemVerExperiments": {
-			"configurableModuleFormat": true
-		},
 		"nodeArguments": [
-			"--loader=ts-node/esm"
+			"--import=tsx/esm"
 		]
 	},
 	"xo": {
@@ -83,11 +82,10 @@
 			"@typescript-eslint/member-ordering": "off",
 			"@typescript-eslint/no-floating-promises": "off",
 			"@typescript-eslint/no-invalid-void-type": "off"
-		}
-	},
-	"nyc": {
-		"extension": [
-			".ts"
+		},
+		"ignores": [
+			"rollup.config.js"
 		]
-	}
+	},
+	"packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971"
 }

@@ -1,21 +1,21 @@
-import Benchmark, {Deferred, Event} from 'benchmark';
-import PQueue from './source/index.js';
+import Benchmark, { type Deferred, type Event } from 'benchmark';
+import PQueue from './src/index.js';
 
 const suite = new Benchmark.Suite();
 
 // Benchmark typings aren't up to date, let's help out manually
-type Resolvable = Deferred & {resolve: () => void};
+type Resolvable = Deferred & { resolve: () => void };
 
 suite
 	.add('baseline', {
 		defer: true,
 
-		fn: async (deferred: Resolvable) => {
+		async fn(deferred: Resolvable) {
 			const queue = new PQueue();
 
 			for (let i = 0; i < 100; i++) {
 				// eslint-disable-next-line @typescript-eslint/no-empty-function
-				queue.add(async () => {});
+				queue.add(async () => { });
 			}
 
 			await queue.onEmpty();
@@ -25,12 +25,12 @@ suite
 	.add('operation with random priority', {
 		defer: true,
 
-		fn: async (deferred: Resolvable) => {
+		async fn(deferred: Resolvable) {
 			const queue = new PQueue();
 
 			for (let i = 0; i < 100; i++) {
 				// eslint-disable-next-line @typescript-eslint/no-empty-function
-				queue.add(async () => {}, {
+				queue.add(async () => { }, {
 					priority: Math.trunc(Math.random() * 100),
 				});
 			}
@@ -42,12 +42,12 @@ suite
 	.add('operation with increasing priority', {
 		defer: true,
 
-		fn: async (deferred: Resolvable) => {
+		async fn(deferred: Resolvable) {
 			const queue = new PQueue();
 
 			for (let i = 0; i < 100; i++) {
 				// eslint-disable-next-line @typescript-eslint/no-empty-function
-				queue.add(async () => {}, {
+				queue.add(async () => { }, {
 					priority: i,
 				});
 			}
